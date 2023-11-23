@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header">
+    <div>
+      <h5 class="header-text col" [innerHTML]=" usersService.users[post.userId]" ></h5>
+	  <span>Post No.</span>
+      <span>{{post.id}}</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <div class="card-text">
+		<h5>{{ post.title }}</h5>
+      <i class="material-icons" [innerHTML]="moreInfo ? 'expand_less' : 'expand_more'" (click)="moreInfo =! moreInfo" title="moreInfo"></i>
+		<div *ngIf="moreInfo">{{post.body}}</div>
+	</div>
+    <button class="btn btn-primary" [routerLink]="'post/' + post.id">View all post</button>
+  </div>
+</div>
