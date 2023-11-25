@@ -1,0 +1,27 @@
+<body>
+
+	<div *ngIf="!post || loader" class="background-loader">
+		<div class="loader color"></div>
+	</div>
+	<div class="form-style">
+		<form *ngIf="post && !loader" [formGroup]="postForm" (ngSubmit)="onSubmit()" (change)="userClicked()">
+		<!-- <i class="material-icons btn btn-success V" type="submit" (click)="onSubmit">done</i> -->
+		<div class="input-style">
+			<label for="title">title</label>
+			<input class="form-control" id="title" formControlName="title"  [ngClass]="messeg_error.title ?'red-border' : 'none'" required>
+			<div *ngIf="messeg_error.title" >
+				<span class="req">{{messeg_error.title}}</span>
+			</div>
+		</div>
+		<div class="input-style">
+			<label for="body">body</label>
+			<textarea class="form-control" id="body" formControlName="body" [ngClass]="messeg_error.body ?'red-border' : 'none'" required></textarea>
+		    <div *ngIf="messeg_error.body" >
+            	<span class="req">{{messeg_error.body}}</span>
+        	</div>
+		</div>
+		<button class="V btn btn-success" (click)="onSubmit"><i class="material-icons " >done</i></button>
+
+		</form>
+	</div>
+</body>

@@ -9,25 +9,19 @@ import { User } from '../models/user.model';
 export class UsersService {
   private baseUrl = 'https://jsonplaceholder.typicode.com/';
   private endUrl = 'users';
-  //   users: User[] = [];
   users: any = {};
+  usersList: User[] = []
+
   constructor(private httpClient: HttpClient) {
     this.getAllUsers();
   }
 
   getAllUsers() {
     this.httpClient.get(this.baseUrl + this.endUrl).subscribe((data: any) => {
-      console.log(data);
-
       data.forEach((user: any) => {
         this.users[user.id] = user.name;
+        this.usersList.push({ id: user.id, name: user.name });
       });
-
-    //   data.forEach((element: any) => {
-    //     let user = { id: element.id, name: element.name };
-    //     this.users.push(user);
-    //   });
-      console.log(this.users);
     });
   }
 }

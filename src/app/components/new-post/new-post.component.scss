@@ -1,0 +1,19 @@
+.form-style {
+  width: 60vw;
+  margin: auto;
+}
+.text-style{
+min-height: 150px;
+}
+.buttons {
+  width: 55vw;
+  margin: auto;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  button {
+    width: 12vw;
+    min-width: 95px;
+    margin: 10px;
+  }
+}

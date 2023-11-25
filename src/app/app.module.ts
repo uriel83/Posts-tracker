@@ -6,10 +6,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostViewComponent } from './components/post-view/post-view.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PostCardComponent } from './components/post-card/post-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HeaderComponent } from './components/header/header.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
+import { MyHttpInterceptorInterceptor } from './my-http-interceptor.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -17,16 +22,24 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HomeComponent,
     PostsComponent,
     PostViewComponent,
-    PostCardComponent
+    PostCardComponent,
+    HeaderComponent,
+    EditPostComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
 	HttpClientModule,
 	FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+	ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyHttpInterceptorInterceptor,
+      multi: true,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

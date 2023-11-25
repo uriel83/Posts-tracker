@@ -1,9 +1,25 @@
-.post-view{
-width: 50vw;
-min-width: 400px;
-min-height: 400px;
-margin: auto;
-padding: 20px;
-background-color: beige;
-border: solid black 1px;
+.body {
+  position: sticky;
+  width: 100%;
+  min-height: 100vh;
+  top: 80px;
+  left: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+.post-view {
+  width: 40vw;
+  min-width: 500px;
+
+  margin: auto;
+
+  padding-top: 40px;
+  // background-color: rgba(10, 10, 10, 0.4);
+  z-index: 10;
+  // border: solid black 1px;
+}
+.card-style {
+  margin-top: 10px;
+  min-height: 400px;
 }

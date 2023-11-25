@@ -1,19 +1,23 @@
 
-<h1>list post</h1>
-   <div class="search-hero">
-      <input class="form-control" type="text"  [(ngModel)]="searchText" (chenge)="searchByTitle()" placeholder=" Start searching for a post by number or title">
-    </div>
-<!-- <div class="router-style"> -->
 <router-outlet></router-outlet>
-<!-- </div> -->
+<h1 class="text-center">List post</h1>
+<div class="row">
+<div class="col-1"></div>
+<div class="btn btn-primary col-3 text-center search" routerLink="/newPost" >+ Add new post</div>
+<h1 class="col-4"></h1>
+   <div class="col-3">
+      <input class="form-control search col-6" type="text"  [(ngModel)]="searchText" (chenge)="searchByTitle()" placeholder=" Search post by title">
+    </div>
+<div class="col-1"></div>
+</div>
 <!-- <div class="row">
   <div class="col-sm-5 mt-4" *ngFor="let post of posts | filter:searchText ">
           <app-post-card [post]="post"></app-post-card>
   </div> -->
-<div class="row">
-  <div class="col-sm-5 mt-4" *ngFor="let post of searchByTitle()">
-          <app-post-card [post]="post"></app-post-card>
-  </div>
+<div class="row ">
+	<div class="col-sm-5 mt-4 posts" *ngFor="let post of searchByTitle()">
+			<app-post-card [post]="post"></app-post-card>
+	</div>
 </div>
 
 

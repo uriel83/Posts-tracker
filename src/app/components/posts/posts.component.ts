@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../../shared/services/posts.service';
 import { Post } from 'src/app/shared/models/post.model';
-import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-posts',
@@ -19,16 +18,10 @@ export class PostsComponent implements OnInit {
   getAllPosts() {
     this.postsService.getPosts('posts').subscribe((res) => {
       this.posts = res;
-      console.log(this.posts);
     });
   }
 
 searchByTitle(){
-//  if (this.searchText != '') {
-	
-//  } else {
-	
-//  }
     return this.posts.filter(post => post.title.includes(this.searchText));
   }
 

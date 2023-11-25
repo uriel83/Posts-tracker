@@ -3,6 +3,7 @@ export class Post {
   id: number;
   title: string;
   body: string;
+	controls: any;
 
   constructor(userId: number, id: number, title: string, body: string) {
     this.userId = userId;

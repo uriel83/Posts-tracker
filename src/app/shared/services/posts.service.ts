@@ -1,43 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostsService {
-private baseUrl = 'https://jsonplaceholder.typicode.com/';
-  constructor(private httpClient: HttpClient) { }
+  private baseUrl = 'https://jsonplaceholder.typicode.com/';
+//  headers = {'Content-type': 'application/json; charset=UTF-8'}
 
+  private editSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  public edit$: Observable<any> = this.editSubject.asObservable();
+  
+  constructor(private httpClient: HttpClient) {}
 
-getPosts(endUrl : string): Observable<any> {
-    console.log('servis all posts');
-
-    return this.httpClient.get(this.baseUrl + endUrl)
+  chengeEdit(edit: boolean) {
+    this.editSubject.next(edit);
   }
 
-//   getAllSupervizor(): Observable<any> {
-//     console.log('servis all Supervizor');
+  getPosts(endUrl: string): Observable<any> {
+    return this.httpClient.get(this.baseUrl + endUrl);
+  }
 
-//     return this.httpClient.get(this.baseUrl + 'login/getAllSupervizor')
-//   }
-//   getAllUserBySupervizor(supervizor:string): Observable<any>{
-//     console.log('servis all Users By Supervizor');
-//     return this.httpClient.get(this.baseUrl + 'api/users/getAllUserBySupervizor/'+supervizor)
-//   }
-//   getUserByName(name: string): Observable<any> {
-//     return this.httpClient.get(this.baseUrl + 'api/users/byName/' + name)
-//   }
-//   getUserByIdNumber(idNumber: number): Observable<any> {
-//     return this.httpClient.get(this.baseUrl + 'api/users/byId/' + idNumber)
-//   }
-//   updateMailUser(idNumber: number, age: number, city: string, country: string, graduation_year: number,
-//     academic_institution: string, medical_institution: string, residency: string, department: string): Observable<any> {
+  creatPost(post: any): Observable<any> {
+    return this.httpClient.post(this.baseUrl + 'posts/', { post });
+  }
 
-
-//     return this.httpClient.put(this.baseUrl + 'api/users/Id/' + idNumber,
-//       { idNumber, age, city, country, graduation_year, academic_institution, medical_institution, residency, department })
-//   }
-
+  updatePost(post: any, postId: number): Observable<any> {
+    return this.httpClient.put(this.baseUrl + 'posts/' + postId, { post });
+  }
 }

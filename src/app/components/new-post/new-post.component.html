@@ -1,0 +1,40 @@
+<div class="card text-dark bg-light mb-3 mt-5 form-style" >
+  <div class="card-header">New post</div>
+  <div class="card-body">
+	<div *ngIf="loader" class="background-loader">
+		<div class="loader color"></div>
+	</div>
+ <form  [formGroup]="postForm" (change)="userClicked()">
+ 
+	<label for="userId" class="form-label">User name</label><span class="req" title="שדה חובה">*</span>
+	<!-- <input > -->
+	<select id="datalistOptions" class="form-control" list="datalistOptions" id="userId" formControlName="userId" placeholder="User to search..."[ngClass]="messeg_error.userId ?'red-border' : 'none'" required><span class="req" title="שדה חובה">*</span>
+	<ng-container>
+		<option ></option>
+		<option *ngFor="let user of usersService.usersList"  [value]="user.id">{{user.name}}</option>
+	</ng-container>
+	</select>
+        <div *ngIf="messeg_error.userId" >
+            <span class="req">{{messeg_error.userId}}</span>
+        </div>
+	<div class="input-style">
+		<label for="title">title</label><span class="req" [title]="messeg_error">*</span>
+		<input class="form-control" id="title" formControlName="title" [ngClass]="messeg_error.title ?'red-border' : 'none'" required>
+        <div *ngIf="messeg_error.title" >
+            <span class="req">{{messeg_error.title}}</span>
+        </div>
+	</div>
+	<div >
+		<label for="body">body</label><span class="req" title="שדה חובה">*</span>
+		<textarea class="form-control text-style" id="body" formControlName="body" [ngClass]="messeg_error.body ?'red-border' : 'none'" required></textarea>
+		        <div *ngIf="messeg_error.body" >
+            <span class="req">{{messeg_error.body}}</span>
+        </div>
+	</div>
+	<div class=" buttons">
+		<button class="V btn btn-success" (click)="onSubmit()">Send</button>
+		<button class="V btn btn-success" routerLink="/posts">Cencel</button>
+	</div>
+	</form>
+  </div>
+</div>

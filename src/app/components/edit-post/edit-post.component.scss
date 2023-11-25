@@ -1,0 +1,32 @@
+body {
+  position: relative;
+  margin-top: 1px;
+  min-height: 265px;
+}
+
+.V {
+  position: absolute;
+  top: -38px;
+  right: 10px;
+  border-radius: 54%;
+  height: 40px;
+  padding: 7px;
+  width: 40px;
+  z-index: 1000;
+}
+.form-style {
+  height: 230px;
+}
+.input-style {
+  margin: auto;
+  input {
+    margin: auto;
+    width: 85%;
+  }
+  textarea {
+    margin: auto;
+    width: 85%;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+}
